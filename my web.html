@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sathsara Yoshith - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #0a192f;
+            --text-color: #e6f1ff;
+            --card-bg: rgba(17, 34, 64, 0.7);
+            --hover-color: #64ffda;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--hover-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--hover-color));
+            border-radius: 2px;
+        }
+
+        .section-text {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 40px;
+            color: #8892b0;
+        }
+
+        /* Home/About Section */
+        #home {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 150px;
+        }
+
+        .home-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .home-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .home-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .home-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .profile-img-container {
+            flex: 0 0 300px;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--text-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Category Filters */
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: rgba(17, 34, 64, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 30px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .project-description {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+
+        .project-category {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 4px 10px;
+            background-color: rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        /* My Work Section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .work-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .work-item:hover {
+            transform: scale(1.03);
+        }
+
+        .work-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .work-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(10, 25, 47, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .work-item:hover .work-overlay {
+            opacity: 1;
+        }
+
+        .work-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .work-category {
+            font-size: 0.9rem;
+            color: #8892b0;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(100, 255, 218, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(17, 34, 64, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 5px;
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, var(--primary-color), var(--hover-color));
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(10, 25, 47, 0.9);
+            padding: 30px 50px;
+            text-align: center;
+            color: #8892b0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .home-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .profile-img-container {
+                flex: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: rgba(10, 25, 47, 0.95);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.5s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .home-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .projects-grid,
+            .work-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-img-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">SY</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#work">My Work</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home/About Section -->
+    <section id="home">
+        <div class="home-content">
+            <div class="home-text">
+                <h1>Hi, I'm <span>Sathsara Yoshith</span></h1>
+                <p class="section-text">A passionate website developer, photographer, and designer from Sri Lanka. I'm 17 years old and currently studying at ESOFT University. I love building websites, capturing beautiful moments, and creating unique designs. This website is where I share my creative journey and projects.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="profile-img-container">
+                <img src="https://github.com/sathsara-code/Sathsara-Yoshith/blob/main/me.jpg" alt="Sathsara Yoshith" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <p class="section-text">As a website developer, photographer, editor, and designer, I've worked on many creative and technical projects. Here, you'll find a showcase of websites I've built, photos I've captured, designs I've created, and videos I've edited.</p>
+        
+        <div class="category-filters" id="projectFilters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="photography">Photography</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn" data-filter="video">Video Editing</button>
+        </div>
+        
+        <div class="projects-grid" id="projectsGrid">
+            <div class="project-card" data-category="web">
+                <img src="https://picsum.photos/seed/project1/400/300.jpg" alt="Project 1" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">E-Commerce Website</h3>
+                    <p class="project-description">A fully responsive e-commerce platform built with HTML, CSS, and JavaScript.</p>
+                    <span class="project-category">Web Development</span>
+                </div>
+            </div>
+            <div class="project-card" data-category="photography">
+                <img src="https://picsum.photos/seed/project2/400/300.jpg" alt="Project 2" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Travel Photography</h3>
+                    <p class="project-description">A collection of stunning photographs from my travels across Sri Lanka.</p>
+                    <span class="project-category">Photography</span>
+                </div>
+            </div>
+            <div class="project-card" data-category="design">
+                <img src="https://picsum.photos/seed/project3/400/300.jpg" alt="Project 3" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Brand Identity Design</h3>
+                    <p class="project-description">Complete brand identity package including logo, business cards, and social media assets.</p>
+                    <span class="project-category">Design</span>
+                </div>
+            </div>
+            <div class="project-card" data-category="video">
+                <img src="https://picsum.photos/seed/project4/400/300.jpg" alt="Project 4" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Video Editing Portfolio</h3>
+                    <p class="project-description">A showcase of video editing projects for events, advertisements, and social media.</p>
+                    <span class="project-category">Video Editing</span>
+                </div>
+            </div>
+            <div class="project-card" data-category="design">
+                <img src="https://picsum.photos/seed/project5/400/300.jpg" alt="Project 5" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Mobile App UI Design</h3>
+                    <p class="project-description">User interface designs for a fitness tracking mobile application.</p>
+                    <span class="project-category">Design</span>
+                </div>
+            </div>
+            <div class="project-card" data-category="web">
+                <img src="https://picsum.photos/seed/project6/400/300.jpg" alt="Project 6" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Personal Blog Platform</h3>
+                    <p class="project-description">A custom-built blog platform with a clean and minimalist design.</p>
+                    <span class="project-category">Web Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Work Section -->
+    <section id="work">
+        <h2 class="section-title">My Work</h2>
+        <p class="section-text">From logos and t-shirt designs to full websites and social media posters, my work reflects my creativity and attention to detail. Each project tells a story through code, color, or composition.</p>
+        
+        <div class="category-filters" id="workFilters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+            <button class="filter-btn" data-filter="fashion">Fashion</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="marketing">Marketing</button>
+            <button class="filter-btn" data-filter="print">Print Design</button>
+            <button class="filter-btn" data-filter="app">App Design</button>
+        </div>
+        
+        <div class="work-grid" id="workGrid">
+            <div class="work-item" data-category="branding">
+                <img src="https://picsum.photos/seed/work1/400/400.jpg" alt="Work 1" class="work-img">
+                <div class="work-overlay">
+                    <h3 class="work-title">Logo Design</h3>
+                    <p class="work-category">Branding</p>
+                </div>
+            </div>
+            <div class="work-item" data-category="fashion">
+                <img src="https://picsum.photos/seed/work2/400/400.jpg" alt="Work 2" class="work-img">
+                <div class="work-overlay">
+                    <h3 class="work-title">T-Shirt Design</h3>
+                    <p class="work-category">Fashion</p>
+                </div>
+            </div>
+            <div class="work-item" data-category="web">
+                <img src="https://picsum.photos/seed/work3/400/400.jpg" alt="Work 3" class="work-img">
+                <div class="work-overlay">
+                    <h3 class="work-title">Website Design</h3>
+                    <p class="work-category">Web Development</p>
+                </div>
+            </div>
+            <div class="work-item" data-category="marketing">
+                <img src="https://picsum.photos/seed/work4/400/400.jpg" alt="Work 4" class="work-img">
+                <div class="work-overlay">
+                    <h3 class="work-title">Social Media Poster</h3>
+                    <p class="work-category">Marketing</p>
+                </div>
+            </div>
+            <div class="work-item" data-category="print">
+                <img src="https://picsum.photos/seed/work5/400/400.jpg" alt="Work 5" class="work-img">
+                <div class="work-overlay">
+                    <h3 class="work-title">Business Card</h3>
+                    <p class="work-category">Print Design</p>
+                </div>
+            </div>
+            <div class="work-item" data-category="app">
+                <img src="https://picsum.photos/seed/work6/400/400.jpg" alt="Work 6" class="work-img">
+                <div class="work-overlay">
+                    <h3 class="work-title">Mobile App UI</h3>
+                    <p class="work-category">App Design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <p class="section-text">A collection of my favorite photographs and design work that showcases my creativity and technical skills.</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/gallery1/400/400.jpg" alt="Gallery 1" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/gallery2/400/400.jpg" alt="Gallery 2" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/gallery3/400/400.jpg" alt="Gallery 3" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/gallery4/400/400.jpg" alt="Gallery 4" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/gallery5/400/400.jpg" alt="Gallery 5" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/gallery6/400/400.jpg" alt="Gallery 6" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/gallery7/400/400.jpg" alt="Gallery 7" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/seed/gallery8/400/400.jpg" alt="Gallery 8" class="gallery-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-text">Have a project in mind or want to collaborate? Feel free to reach out to me!</p>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">sathsarayoshith679@example.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">Sri Lanka</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">+94 XXX XXX XXX</div>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Sathsara Yoshith. All rights reserved.</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Gallery Image" class="lightbox-img" id="lightboxImg">
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Category filtering for Projects
+        const projectFilters = document.querySelectorAll('#projectFilters .filter-btn');
+        const projectItems = document.querySelectorAll('#projectsGrid .project-card');
+
+        projectFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Update active filter button
+                projectFilters.forEach(btn => btn.classList.remove('active'));
+                filter.classList.add('active');
+                
+                const filterValue = filter.getAttribute('data-filter');
+                
+                // Filter projects
+                projectItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        // Add animation
+                        item.style.animation = 'fadeIn 0.5s ease-in-out';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Category filtering for Work
+        const workFilters = document.querySelectorAll('#workFilters .filter-btn');
+        const workItems = document.querySelectorAll('#workGrid .work-item');
+
+        workFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Update active filter button
+                workFilters.forEach(btn => btn.classList.remove('active'));
+                filter.classList.add('active');
+                
+                const filterValue = filter.getAttribute('data-filter');
+                
+                // Filter work items
+                workItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        // Add animation
+                        item.style.animation = 'fadeIn 0.5s ease-in-out';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('.gallery-img').src;
+                lightboxImg.src = imgSrc;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would normally send the form data to a server
+            // For this example, we'll just show a success message
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            
+            // Create a success message element
+            const successMessage = document.createElement('div');
+            successMessage.style.position = 'fixed';
+            successMessage.style.top = '20px';
+            successMessage.style.left = '50%';
+            successMessage.style.transform = 'translateX(-50%)';
+            successMessage.style.backgroundColor = 'var(--primary-color)';
+            successMessage.style.color = 'var(--secondary-color)';
+            successMessage.style.padding = '15px 30px';
+            successMessage.style.borderRadius = '5px';
+            successMessage.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+            successMessage.style.zIndex = '3000';
+            successMessage.textContent = `Thank you, ${name}! Your message has been sent.`;
+            
+            document.body.appendChild(successMessage);
+            
+            // Reset the form
+            contactForm.reset();
+            
+            // Remove the success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.opacity = '0';
+                successMessage.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    document.body.removeChild(successMessage);
+                }, 500);
+            }, 5000);
+        });
+
+        // Add CSS animation for fadeIn
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
